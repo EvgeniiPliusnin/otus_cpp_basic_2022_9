@@ -5,3 +5,5 @@ this repository is intended for store and share my home work of c++ course.
 
 <!-- branch test1 -->
 test string_1 for first commit in branch test1
+
+test string_2 for second commit in branch test1
