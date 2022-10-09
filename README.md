@@ -4,3 +4,5 @@ otus cpp basic course, home work
 this repository is intended for store and share my home work of c++ course. 
 
 test string_1 for first commit in branch test2
+
+test string_2 for second commit in branch test2
