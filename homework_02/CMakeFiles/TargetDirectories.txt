@@ -1,3 +1,0 @@
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homework_02/source-12995-f9a14f/CMakeFiles/hello_world.dir
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homework_02/source-12995-f9a14f/CMakeFiles/edit_cache.dir
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homework_02/source-12995-f9a14f/CMakeFiles/rebuild_cache.dir
