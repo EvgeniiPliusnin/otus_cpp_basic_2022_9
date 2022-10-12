@@ -6,8 +6,8 @@ add_executable(hello_world
     hello_world.cpp
     example.cpp
     example.h
-    lib_move_todo/move_me_out.cpp
-    lib_move_todo/move_me_out.h
+    lib/move_me_out.cpp
+    lib/move_me_out.h
 )
 
 set_target_properties(hello_world PROPERTIES
