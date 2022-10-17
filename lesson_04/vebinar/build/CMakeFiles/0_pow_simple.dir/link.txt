@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/0_pow_simple.dir/0_pow_simple.cpp.o -o 0_pow_simple 

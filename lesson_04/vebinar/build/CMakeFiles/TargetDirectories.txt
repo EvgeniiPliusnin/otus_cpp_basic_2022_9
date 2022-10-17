@@ -1,0 +1,15 @@
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/0_pow_simple.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/1_pow.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/2_gcd_cin.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/3_args.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/4_gcd.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/5_swap_naive.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/6_swap.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/7_minigrep.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/8_module.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/9_hello.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/10_hanoi.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/11_fib.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/capitalize.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/edit_cache.dir
+/home/sat/projects/otus_cpp_basic_2022_9/lesson_04/vebinar/build/CMakeFiles/rebuild_cache.dir

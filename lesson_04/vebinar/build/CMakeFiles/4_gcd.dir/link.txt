@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/4_gcd.dir/4_gcd.cpp.o -o 4_gcd 

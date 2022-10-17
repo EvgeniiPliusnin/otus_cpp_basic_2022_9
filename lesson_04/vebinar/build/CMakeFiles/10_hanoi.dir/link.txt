@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/10_hanoi.dir/10_hanoi.cpp.o -o 10_hanoi 
