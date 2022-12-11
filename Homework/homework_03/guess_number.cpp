@@ -21,6 +21,24 @@ std::string get_user_name(void) {
     return name;
 }
 
+void exit(void) {
+    // TODO print goodbuy and exit from programm
+}
+
+void get_table(void) {
+
+}
+
+void safe_table(void) {
+
+}
+
+void show_table(void) {
+
+}
+
+
+
 int main(int argc, char const *argv[])
 {
     print_welcome();
