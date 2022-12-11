@@ -1,0 +1,6 @@
+/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/Homework/homework_03/03.homework_source-12995-dca15c/build/CMakeFiles/check_value.dir
+/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/Homework/homework_03/03.homework_source-12995-dca15c/build/CMakeFiles/random_value.dir
+/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/Homework/homework_03/03.homework_source-12995-dca15c/build/CMakeFiles/high_scores.dir
+/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/Homework/homework_03/03.homework_source-12995-dca15c/build/CMakeFiles/argument.dir
+/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/Homework/homework_03/03.homework_source-12995-dca15c/build/CMakeFiles/edit_cache.dir
+/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/Homework/homework_03/03.homework_source-12995-dca15c/build/CMakeFiles/rebuild_cache.dir
