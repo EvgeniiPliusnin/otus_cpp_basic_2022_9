@@ -6,7 +6,7 @@
 
 void print_welcome(void) {
     std::cout << "\n-------------------------------------------------------" << std::endl;
-    std::cout << "<<<           Guess the number game                 >>>" << std::endl;
+    std::cout << "<<<           The game 'Guess the number'           >>>" << std::endl;
     std::cout << "-------------------------------------------------------" << std::endl;
 }
 
@@ -50,10 +50,14 @@ void clear_terminal() {
 #endif
 } 
 
-
-
 int main(int argc, char const *argv[])
 {
+    std::cout << "argument quantity: " << argc << std::endl;
+    for (int i = 0; i < argc; i++){
+        std::cout << argv[i];
+        std::cout << std::endl;
+    }
+    
     print_welcome();
     std::srand(std::time(nullptr));
     const int max_value = 100;
