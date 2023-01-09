@@ -3,6 +3,9 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <boost/program_options.hpp>
+
+namespace po = boost::program_options;
 
 void print_welcome(void) {
     std::cout << "\n-------------------------------------------------------" << std::endl;
@@ -52,19 +55,31 @@ void clear_terminal() {
 
 int main(int argc, char const *argv[])
 {
-    std::cout << "argument quantity: " << argc << std::endl;
-    for (int i = 0; i < argc; i++){
-        std::cout << argv[i];
-        std::cout << std::endl;
+    po::options_description desc("Allowed options");
+    desc.add_options()
+        ("help,h", "produce help message")
+        ("level", po::value<int>(), "set level of game 1-3")
+        ("max", po::value<int>(), "set max value of a number for guess (Don't use with arg level)")
+        ("table", "show a table with scoring results")
+        ("reset", "reset the scoring table values")
+    ;
+
+    po::variables_map vm;
+    po::store(po::parse_command_line(argc, argv, desc), vm);
+    po::notify(vm);  
+
+    if (vm.count("help")) {
+        std::cout << desc << "\n";
+        return 1;
     }
     
-    print_welcome();
-    std::srand(std::time(nullptr));
-    const int max_value = 100;
-    const int random_value = std::rand() % max_value;
+    // print_welcome();
+    // std::srand(std::time(nullptr));
+    // const int max_value = 100;
+    // const int random_value = std::rand() % max_value;
 
-    const std::string user_name = get_user_name();
-    std::cout << user_name << std::endl;
+    // const std::string user_name = get_user_name();
+    // std::cout << user_name << std::endl;
 
 
     return 0;

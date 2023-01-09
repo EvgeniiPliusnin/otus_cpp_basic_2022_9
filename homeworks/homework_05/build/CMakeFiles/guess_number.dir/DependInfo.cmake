@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_03/game.cpp" "CMakeFiles/guess_number.dir/game.cpp.o" "gcc" "CMakeFiles/guess_number.dir/game.cpp.o.d"
+  "/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_05/game.cpp" "CMakeFiles/guess_number.dir/game.cpp.o" "gcc" "CMakeFiles/guess_number.dir/game.cpp.o.d"
   )
 
 # Targets to which this target links.

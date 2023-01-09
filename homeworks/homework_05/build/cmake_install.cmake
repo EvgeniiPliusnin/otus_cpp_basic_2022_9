@@ -1,4 +1,4 @@
-# Install script for directory: /home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_03
+# Install script for directory: /home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_05
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_03/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_05/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

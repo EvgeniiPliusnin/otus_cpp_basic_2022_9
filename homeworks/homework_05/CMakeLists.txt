@@ -2,9 +2,14 @@ cmake_minimum_required(VERSION 3.12)
 
 project(guess_number)
 
+find_package(Boost 1.74 COMPONENTS program_options REQUIRED)
+
 add_executable(guess_number
     game.cpp
-    # guess_number.hpp
+)
+
+target_link_libraries(guess_number
+    Boost::program_options
 )
 
 set_target_properties(guess_number PROPERTIES
