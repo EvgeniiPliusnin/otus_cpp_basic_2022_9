@@ -70,10 +70,10 @@ int main(int argc, char const *argv[])
 
     if (vm.count("help")) {
         std::cout << desc << "\n";
-        return 1;
+        // return 1;
     }
     
-    // print_welcome();
+    print_welcome();
     // std::srand(std::time(nullptr));
     // const int max_value = 100;
     // const int random_value = std::rand() % max_value;
