@@ -5,6 +5,7 @@ project(table)
 add_executable(table
     table.hpp
     table.cpp
+    structures.hpp
 )
 
 set_target_properties(table PROPERTIES
