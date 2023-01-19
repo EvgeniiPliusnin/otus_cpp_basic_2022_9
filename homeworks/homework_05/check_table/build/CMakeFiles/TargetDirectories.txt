@@ -1,3 +1,0 @@
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_05/check_table/build/CMakeFiles/table.dir
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_05/check_table/build/CMakeFiles/edit_cache.dir
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/homeworks/homework_05/check_table/build/CMakeFiles/rebuild_cache.dir
