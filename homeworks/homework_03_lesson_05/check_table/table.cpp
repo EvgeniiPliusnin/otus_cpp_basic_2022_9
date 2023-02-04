@@ -8,13 +8,16 @@
 Table::Table() {
     file_ = std::fstream("./test.csv", std::ios_base::in | std::ios_base::app);
     if (!file_.is_open()) {
-        std::cout << "file is not opened" << std::endl;
+        std::cerr << "file is not opened" << std::endl;
     } else {
         std::vector<std::string> v;
         for (std::string str; std::getline(file_, str);) {
             v.push_back(str);
         }
-        std::for_each(v.begin(), v.end(), [](std::string s){std::cout << s << std::endl;});
+        auto parse = [](std::string str) {
+            std::cout << str << std::endl;
+        };
+        std::for_each(v.begin(), v.end(), parse);
     }
 }
 
