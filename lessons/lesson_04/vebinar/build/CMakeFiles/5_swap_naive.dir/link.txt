@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/5_swap_naive.dir/5_swap_naive.cpp.o -o 5_swap_naive 

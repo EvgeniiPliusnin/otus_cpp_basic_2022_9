@@ -1,3 +1,0 @@
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/experiments/boost_po/build/CMakeFiles/my_example.dir
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/experiments/boost_po/build/CMakeFiles/edit_cache.dir
-/home/evgenii/EDU/projects/otus_cpp_basic_2022_9/experiments/boost_po/build/CMakeFiles/rebuild_cache.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/7_minigrep.dir/7_minigrep.cpp.o -o 7_minigrep 

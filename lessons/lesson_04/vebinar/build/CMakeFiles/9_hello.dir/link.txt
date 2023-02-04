@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/9_hello.dir/9_hello.cpp.o -o 9_hello 

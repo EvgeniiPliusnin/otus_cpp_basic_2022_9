@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/2_gcd_cin.dir/2_gcd_cin.cpp.o -o 2_gcd_cin 
