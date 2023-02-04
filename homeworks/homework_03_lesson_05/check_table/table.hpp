@@ -10,17 +10,14 @@
 class Table{
 public:
     Table();
-    bool update(const Winner& winner);
+    bool update(const Result& result);
     void show_results();
     void reset_results();
 
 private:
-    void write_row(std::fstream& file, std::string val);
-    void read_row(std::fstream& file, std::string& val);
-    void parse_row(const std::string& val);
     void sort();
 
 private:
     std::fstream file_;
-    std::vector<Winner> table_;
+    std::vector<Result> table_;
 };  

@@ -9,12 +9,11 @@ struct Time
     std::chrono::hours hours;
 };
 
-struct Winner
+struct Result
 {
-    int position;
     std::string user_name;
     Time recored_time;
-    int high_score;
+    int score;
 };
 
 

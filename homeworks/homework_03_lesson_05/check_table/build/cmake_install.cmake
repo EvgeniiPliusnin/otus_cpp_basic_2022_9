@@ -1,4 +1,4 @@
-# Install script for directory: /home/sat/projects/otus_cpp_basic_2022_9/homeworks/homework_03_lesson_05/check_table
+# Install script for directory: /home/sat/edu/projects/otus_cpp_basic_2022_9/homeworks/homework_03_lesson_05/check_table
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/sat/projects/otus_cpp_basic_2022_9/homeworks/homework_03_lesson_05/check_table/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/sat/edu/projects/otus_cpp_basic_2022_9/homeworks/homework_03_lesson_05/check_table/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
