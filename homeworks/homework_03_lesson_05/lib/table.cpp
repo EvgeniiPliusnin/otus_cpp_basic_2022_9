@@ -22,7 +22,7 @@ Table::Table() {
 }
 
 void Table::show_results() {
-
+    
 }
 
 int main(int argc, char const *argv[])
