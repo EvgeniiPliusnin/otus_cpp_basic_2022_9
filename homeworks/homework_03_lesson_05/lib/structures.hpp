@@ -4,7 +4,7 @@
 
 struct Result {
     std::string user_name;
-    std::chrono::duration<std::chrono::seconds> record_time;
+    std::chrono::seconds record_time;
     int score;
 };
 

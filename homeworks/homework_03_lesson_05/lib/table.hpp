@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 #include "structures.hpp"
+#include <chrono>
 
 class Table{
 public:
