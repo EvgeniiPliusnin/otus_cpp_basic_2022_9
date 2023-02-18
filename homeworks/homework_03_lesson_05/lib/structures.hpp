@@ -2,18 +2,9 @@
 
 #include <chrono>
 
-struct Time
-{
-    std::chrono::seconds sec;
-    std::chrono::minutes min;
-    std::chrono::hours hours;
-};
-
-struct Result
-{
+struct Result {
     std::string user_name;
-    Time recored_time;
+    std::chrono::duration<std::chrono::seconds> record_time;
     int score;
 };
-
 
