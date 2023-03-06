@@ -1,20 +1,28 @@
 #include "table.hpp"
 
+using namespace std::chrono;
+
 Table::Table() {
     file_ = std::fstream("./test.csv", std::ios_base::in | std::ios_base::app);
     if (!file_.is_open()) {
         std::cerr << "file is not opened" << std::endl;
     } else {
         auto parse = [](std::string str) -> Result {
-            std::vector<std::string> str_result;
-
-            Result result = {
-                .user_name = "user_name",
-                .record_time = std::chrono::seconds{std::stoi("123")},
-                .score = std::stoi("55"),
-            };
-
+            std::string delim = ";";
             Result result;
+
+            // user_name
+            std::size_t pos = str.find(delim);
+            result.user_name = str.substr(0, pos);
+            str.erase(0, pos + delim.length());
+
+            // record_time
+            pos = str.find(delim);
+            result.record_time = seconds{std::stoi(str.substr(0, pos))};
+            str.erase(0, pos + delim.length());
+
+            // score
+            result.score = std::stoi(str);
 
             return result;
         };
@@ -36,7 +44,7 @@ void Table::show_results() {
 }
 
 void Table::sort() {
-    
+
 }
 
 int main(int argc, char const *argv[])
