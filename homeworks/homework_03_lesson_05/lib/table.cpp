@@ -35,21 +35,40 @@ Table::Table() {
 
 void Table::show_results() {
     auto announce_winner = [](Result result) {
-        std::cout << "*********************************" << std::endl;
+        std::cout << "******************************************" << std::endl;
         std::cout << result.user_name << "   |    ";
-        std::cout << result.record_time.count() << "   |   ";
+        std::cout << result.record_time.count() << "           |   ";
         std::cout << result.score << "   |" << std::endl;
     };
     std::for_each(table_.cbegin(), table_.cend(), announce_winner);
 }
 
 void Table::sort() {
+    auto compare = [](const Result& a, const Result& b){
+        if (a.score > b.score) {
+            return true;
+        } else if (a.score < b.score) {
+            return false;
+        } else {
+            if (a.record_time < b.record_time) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    };
 
+    std::stable_sort(table_.begin(), table_.end(), compare);
 }
 
 int main(int argc, char const *argv[])
 {
     Table table;
+    table.show_results();
+
+    std::cout << "\n\n\n";
+
+    table.sort();
     table.show_results();
 
     return 0;

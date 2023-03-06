@@ -15,9 +15,10 @@ public:
     bool update(const Result& result);
     void show_results();
     void reset_results();
+     void sort();
 
 private:
-    void sort();
+   
 
 private:
     std::fstream file_;
