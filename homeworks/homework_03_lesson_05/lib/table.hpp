@@ -7,6 +7,7 @@
 #include <vector>
 #include "structures.hpp"
 #include <chrono>
+#include <algorithm>
 
 class Table{
 public:
