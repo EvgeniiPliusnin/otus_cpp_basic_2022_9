@@ -12,13 +12,12 @@
 class Table{
 public:
     Table();
-    bool update(const Result& result);
+    void update(const Result& result);
     void show_results();
     void reset_results();
-     void sort();
 
 private:
-   
+    void sort();
 
 private:
     std::fstream file_;

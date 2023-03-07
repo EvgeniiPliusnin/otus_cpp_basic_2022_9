@@ -34,12 +34,36 @@ Table::Table() {
 }
 
 void Table::show_results() {
-    auto announce_winner = [](Result result) {
-        std::cout << "******************************************" << std::endl;
-        std::cout << result.user_name << "   |    ";
+    auto announce_winner = [](Result result) {  
+        std::cout << "******************************************" << std::endl; 
+        std::cout << result.user_name << "   |    ";    
         std::cout << result.record_time.count() << "           |   ";
         std::cout << result.score << "   |" << std::endl;
     };
+
+    auto no_result_msg = []() {
+        std::cout<< "\r\n"
+            "***************************\r\n"   
+            "       NO RESULT           \r\n"
+            "***************************\r\n"
+            //  TODO: solve beautiful export, doesn't work (unknown escape sequence)
+            // "**************************************************************\r\n"
+            // "*           _   __                              ____         *\r\n"
+            // "*          / | / /___     ________  _______  __/ / /_        *\r\n"
+            // "*         /  |/ / __ \   / ___/ _ \/ ___/ / / / / __/        *\r\n"
+            // "*        / /|  / /_/ /  / /  /  __(__  ) /_/ / / /_          *\r\n"
+            // "*       /_/ |_/\____/  /_/   \___/____/\__,_/_/\__/          *\r\n"
+            // "*                                                            *\r\n"
+            // "*                                                            *\r\n"  
+            // "**************************************************************\r\n"
+        << std::endl;
+    };
+
+    if (table_.empty()) {
+        no_result_msg();
+    } else {
+
+    }
     std::for_each(table_.cbegin(), table_.cend(), announce_winner);
 }
 
@@ -53,7 +77,7 @@ void Table::sort() {
             if (a.record_time < b.record_time) {
                 return true;
             } else {
-                return false;
+                return false;   
             }
         }
     };
@@ -61,14 +85,20 @@ void Table::sort() {
     std::stable_sort(table_.begin(), table_.end(), compare);
 }
 
+void Table::update(const Result& result) {
+    table_.push_back(result);
+    sort();
+}
+
+void Table::reset_results() {
+    table_.erase(table_.begin(), table_.end());
+    file_.
+}
+
 int main(int argc, char const *argv[])
 {
     Table table;
-    table.show_results();
-
-    std::cout << "\n\n\n";
-
-    table.sort();
+    table.update(Result{.user_name{"added_instance_test"}, .record_time{3s}, .score{7777777}});
     table.show_results();
 
     return 0;
