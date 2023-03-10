@@ -19,7 +19,7 @@ How to calculate score for user:
         - 2 -> 10..49
         - 3 -> 50..99
         - if max_value >= 100
-            - (3 + k), then k = max_value % 100 / 10
+            - (3 + k), then k = max_value / 100 % 10
 
 
 ----------------------------------------------------

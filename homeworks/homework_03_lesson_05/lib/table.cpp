@@ -3,7 +3,7 @@
 using namespace std::chrono;
 
 Table::Table() {
-    file_ = std::fstream("./test.csv", std::ios_base::in | std::ios_base::app);
+    file_ = std::fstream("./score_table", std::ios_base::in | std::ios_base::app);
     if (!file_.is_open()) {
         std::cerr << "file is not opened" << std::endl;
     } else {
@@ -30,41 +30,110 @@ Table::Table() {
         for (std::string str; std::getline(file_, str);) {
             table_.push_back(parse(str));
         }
+        file_.close();
     }
 }
 
 void Table::show_results() {
-    auto announce_winner = [](Result result) {  
-        std::cout << "******************************************" << std::endl; 
-        std::cout << result.user_name << "   |    ";    
-        std::cout << result.record_time.count() << "           |   ";
-        std::cout << result.score << "   |" << std::endl;
+    auto get_max_width = [](std::string item, unsigned int &width) {
+        auto length = item.length();
+        if(length > width)
+            width = length;
     };
 
-    auto no_result_msg = []() {
+    auto print_no_result_msg = [this]() {
         std::cout<< "\r\n"
             "***************************\r\n"   
-            "       NO RESULT           \r\n"
+            "       NO RESULTS          \r\n"
             "***************************\r\n"
-            //  TODO: solve beautiful export, doesn't work (unknown escape sequence)
-            // "**************************************************************\r\n"
-            // "*           _   __                              ____         *\r\n"
-            // "*          / | / /___     ________  _______  __/ / /_        *\r\n"
-            // "*         /  |/ / __ \   / ___/ _ \/ ___/ / / / / __/        *\r\n"
-            // "*        / /|  / /_/ /  / /  /  __(__  ) /_/ / / /_          *\r\n"
-            // "*       /_/ |_/\____/  /_/   \___/____/\__,_/_/\__/          *\r\n"
-            // "*                                                            *\r\n"
-            // "*                                                            *\r\n"  
-            // "**************************************************************\r\n"
         << std::endl;
     };
 
-    if (table_.empty()) {
-        no_result_msg();
-    } else {
 
+    auto get_header_bound = [this]() {
+        header_bound_ = "+";
+        for (int i = 0; i < (ROW_WIDTH - 2); i++) {
+            header_bound_ += "-";
+        }
+        header_bound_ += "+\n\r";
+    };
+
+    auto get_line_bound = [this] () {
+        line_bound_ = "+";
+        auto item_padding = [this] (unsigned int size) {
+            for(size_t i = 0; i < (PADDING * 2 + size); i++) {
+                line_bound_ += "-";
+            }
+        };
+        item_padding(POS_WIDTH);
+        line_bound_ += "+";
+        item_padding(USER_NAME_WIDTH);
+        line_bound_ += "+";
+        item_padding(TIME_WIDTH);
+        line_bound_ += "+";
+        item_padding(SCORE_WIDTH);
+        line_bound_ += "+\n";
+    };
+
+    auto print_item = [this](const std::string &str, unsigned int &len) {
+        std::cout << "|";
+        std::string space_padding(PADDING, ' ');
+        std::cout << space_padding;
+        std::cout << std::left << std::setw(len + 2) << str + space_padding;
+
+    };
+
+    auto init_msg = [&, this]() {
+        for_each (table_.begin(), table_.end(), [&, this](auto item){
+            get_max_width(item.user_name, USER_NAME_WIDTH);
+            get_max_width(std::to_string(item.record_time.count()), TIME_WIDTH);
+            get_max_width(std::to_string(item.score), SCORE_WIDTH);
+        });
+        ROW_WIDTH = 2 + (2 * PADDING * ITEM_CNT) + POS_WIDTH + USER_NAME_WIDTH + TIME_WIDTH + SCORE_WIDTH + ITEM_CNT - 1;
+                get_header_bound();
+        get_line_bound();
+    };
+
+    auto print_winners = [&, this]() {
+        for (size_t i = 0; i < table_.size(); ++i) {
+            if (i == 5)
+                break;
+            print_item(std::to_string(i + 1), POS_WIDTH);
+            print_item(table_[i].user_name, USER_NAME_WIDTH);
+            print_item(std::to_string(table_[i].record_time.count()), TIME_WIDTH);
+            print_item(std::to_string(table_[i].score), SCORE_WIDTH);
+            std::cout << "|" << std::endl <<  line_bound_;
+        }
+    };
+
+    auto print_header = [&]() {
+        std::cout << header_bound_;
+        std::string msg = "Aviable only 5 positions";
+        std::string msg_row = "|";
+        for(int i = 0; i < ((ROW_WIDTH - msg.length()) / 2); i++){
+            msg_row += " ";
+        };
+        msg_row += msg;
+        for(int i = 0; ROW_WIDTH != (msg_row.length() + 1); i++){
+            msg_row += " ";
+        };        
+        msg_row += "|";
+        std::cout << std::right << msg_row << std::endl;
+        std::cout << line_bound_;
+        print_item("No", POS_WIDTH);
+        print_item("USER NAME", USER_NAME_WIDTH);
+        print_item("TIME", TIME_WIDTH);
+        print_item("SCORE", SCORE_WIDTH);
+        std::cout << "|" << std::endl << line_bound_;
+    };
+
+    if (table_.empty()) {
+        print_no_result_msg();
+    } else {
+        init_msg();
+        print_header();
+        print_winners();
     }
-    std::for_each(table_.cbegin(), table_.cend(), announce_winner);
 }
 
 void Table::sort() {
@@ -92,14 +161,21 @@ void Table::update(const Result& result) {
 
 void Table::reset_results() {
     table_.erase(table_.begin(), table_.end());
-    file_.
+    file_.open("./score_table", std::ios::out | std::ios::trunc);
+
+    file_.close();
 }
 
 int main(int argc, char const *argv[])
 {
-    Table table;
-    table.update(Result{.user_name{"added_instance_test"}, .record_time{3s}, .score{7777777}});
-    table.show_results();
+    Table game_table;
+    game_table.show_results();
+
+    game_table.update(Result{.user_name{"added_instance_tffffffffffffffffffffest"}, .record_time{3s}, .score{7777777}});
+    game_table.show_results();
+
+    game_table.reset_results();
+    game_table.show_results();    
 
     return 0;
 }
