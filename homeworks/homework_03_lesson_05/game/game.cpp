@@ -1,9 +1,5 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <ctime>
-#include <cstdlib>
-#include <boost/program_options.hpp>
+#include "game.hpp"
+#include "table.hpp"
 
 namespace po = boost::program_options;
 
@@ -72,6 +68,15 @@ int main(int argc, char const *argv[])
         std::cout << desc << "\n";
         // return 1;
     }
+
+    Table game_table;
+    game_table.show_results();
+
+    game_table.update(Result{.user_name{"added_instance_tffffffffffffffffffffest"}, .record_time{3s}, .score{7777777}});
+    game_table.show_results();
+
+    game_table.reset_results();
+    game_table.show_results();  
     
     print_welcome();
     // std::srand(std::time(nullptr));

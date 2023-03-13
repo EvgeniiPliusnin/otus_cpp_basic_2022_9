@@ -6,6 +6,9 @@ find_package(Boost 1.74 COMPONENTS program_options REQUIRED)
 
 add_executable(guess_number
     game.cpp
+    table.hpp
+    table.cpp
+    structures.hpp    
 )
 
 target_link_libraries(guess_number
