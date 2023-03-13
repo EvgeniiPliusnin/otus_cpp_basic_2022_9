@@ -23,7 +23,7 @@ How to calculate score for user:
 
 
 ----------------------------------------------------
-|           structure of the result table          |     
+|           structure of the result view           |
 +----------+-----------+-------------+-------------+
 | position | user_name | record_time |  high_score |
 ----------------------------------------------------

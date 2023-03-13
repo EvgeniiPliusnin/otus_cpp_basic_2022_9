@@ -30,6 +30,8 @@ private:
     unsigned int ITEM_CNT = 4;
     unsigned int ROW_WIDTH = 0;
 
+    std::string score_table_ = "./score_table";
+
     std::fstream file_;
     std::vector<Result> table_;
     std::string header_bound_ = "";

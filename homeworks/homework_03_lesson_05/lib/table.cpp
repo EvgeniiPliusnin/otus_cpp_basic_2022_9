@@ -3,7 +3,7 @@
 using namespace std::chrono;
 
 Table::Table() {
-    file_ = std::fstream("./score_table", std::ios_base::in | std::ios_base::app);
+    file_ = std::fstream(score_table_, std::ios_base::in | std::ios_base::app);
     if (!file_.is_open()) {
         std::cerr << "file is not opened" << std::endl;
     } else {
@@ -43,9 +43,9 @@ void Table::show_results() {
 
     auto print_no_result_msg = [this]() {
         std::cout<< "\r\n"
-            "***************************\r\n"   
-            "       NO RESULTS          \r\n"
-            "***************************\r\n"
+            "******************************************************************\r\n"
+            "                            NO RESULTS\r\n"
+            "******************************************************************\r\n"
         << std::endl;
     };
 
@@ -157,12 +157,18 @@ void Table::sort() {
 void Table::update(const Result& result) {
     table_.push_back(result);
     sort();
+    file_.open(score_table_, std::ios::out | std::ios::trunc);
+    for(auto item : table_) {
+        file_ << item.user_name << ";";
+        file_ << std::to_string(item.record_time.count()) << ";";
+        file_ << std::to_string(item.score) << std::endl;
+    }
+    file_.close();
 }
 
 void Table::reset_results() {
     table_.erase(table_.begin(), table_.end());
-    file_.open("./score_table", std::ios::out | std::ios::trunc);
-
+    file_.open(score_table_, std::ios::out | std::ios::trunc);
     file_.close();
 }
 
