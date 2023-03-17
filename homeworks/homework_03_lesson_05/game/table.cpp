@@ -170,4 +170,9 @@ void Table::reset_results() {
     table_.erase(table_.begin(), table_.end());
     file_.open(score_table_, std::ios::out | std::ios::trunc);
     file_.close();
+    std::cout<< "\r\n"
+        "******************************************************************\r\n"
+        "                  THE RESULTS TABLE HAS BEEN RESET\r\n"
+        "******************************************************************\r\n"
+        << std::endl;
 }

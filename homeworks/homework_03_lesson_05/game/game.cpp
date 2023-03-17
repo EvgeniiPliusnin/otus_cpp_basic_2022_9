@@ -17,37 +17,13 @@ std::string get_user_name(void) {
         std::cout << "Error. String is empty. ";    // todo - fix (doesn't show error)
         name = get_user_name();
     }
-    
+
     return name;
 }
 
 void exit(void) {
     // TODO print goodbuy and exit from programm
 }
-
-void get_table(void) {
-
-}
-
-void safe_table(void) {
-
-}
-
-void show_table(void) {
-
-}
-
-void clear_terminal() {
-#if defined _WIN32
-    system("cls");
-    //clrscr(); // including header file : conio.h
-#elif defined (__LINUX__) || defined(__gnu_linux__) || defined(__linux__)
-    system("clear");
-    //std::cout<< u8"\033[2J\033[1;1H"; //Using ANSI Escape Sequences 
-#elif defined (__APPLE__)
-    system("clear");
-#endif
-} 
 
 int main(int argc, char const *argv[])
 {
@@ -56,8 +32,8 @@ int main(int argc, char const *argv[])
         ("help,h", "produce help message")
         ("level", po::value<int>(), "set level of game 1-3")
         ("max", po::value<int>(), "set max value of a number for guess (Don't use with arg level)")
-        ("table", "show a table with scoring results")
-        ("reset", "reset the scoring table values")
+        ("table", "show a table with scoring results and exit")
+        ("reset", "reset the scoring table values and exit")
     ;
 
     po::variables_map vm;
@@ -66,17 +42,32 @@ int main(int argc, char const *argv[])
 
     if (vm.count("help")) {
         std::cout << desc << "\n";
-        // return 1;
+        return 1;
     }
 
-    Table game_table;
-    game_table.show_results();
+    Table score_table;
 
-    game_table.update(Result{.user_name{"added_instance_tffffffffffffffffffffest"}, .record_time{3s}, .score{7777777}});
-    game_table.show_results();
+    if (vm.count("reset")) {
+        score_table.reset_results();
+        return 1;
+    }
 
-    game_table.reset_results();
-    game_table.show_results();  
+    if (vm.count("level") && (vm.count("max"))) {
+        std::cout << "Don't use at same time 'level' and 'max' arguments, Please choose only one" << std::endl;
+        return 1
+    } else {
+
+    }
+
+    score_table.show_results();
+
+    score_table.update(Result{.user_name{"added_instance_tffffffffffffffffffffest"},
+                              .record_time=std::chrono::seconds(3),
+                              .score{7777777}});
+    score_table.show_results();
+
+    score_table.reset_results();
+    score_table.show_results();  
     
     print_welcome();
     // std::srand(std::time(nullptr));
