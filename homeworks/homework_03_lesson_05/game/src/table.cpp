@@ -1,4 +1,4 @@
-#include "table.hpp"
+#include "../inc/table.hpp"
 
 using namespace std::chrono;
 
