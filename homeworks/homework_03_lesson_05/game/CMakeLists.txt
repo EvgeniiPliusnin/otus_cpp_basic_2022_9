@@ -12,9 +12,7 @@ add_executable(guess_number
     structures.hpp    
 )
 
-target_link_libraries(guess_number
-    Boost::program_options
-)
+target_link_libraries(guess_number Boost::program_options)
 
 set_target_properties(guess_number PROPERTIES
     CXX_STANDARD 17

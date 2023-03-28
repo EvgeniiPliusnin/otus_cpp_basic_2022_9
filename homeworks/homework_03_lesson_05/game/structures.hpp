@@ -1,6 +1,7 @@
 #pragma once
 
 #include <chrono>
+#include <unordered_set>
 
 struct Result {
     std::string user_name;
@@ -8,3 +9,4 @@ struct Result {
     int score;
 };
 
+//std::unordered_set<int>
