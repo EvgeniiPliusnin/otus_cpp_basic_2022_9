@@ -3,7 +3,7 @@
 
 namespace po = boost::program_options;
 
-void print_welcome(void) {
+void Game::init() {
     std::cout << "\n-------------------------------------------------------" << std::endl;
     std::cout << "<<<           The game 'Guess the number'           >>>" << std::endl;
     std::cout << "-------------------------------------------------------" << std::endl;
@@ -21,42 +21,36 @@ std::string get_user_name(void) {
     return name;
 }
 
-void exit(void) {
-    // TODO print goodbuy and exit from programm
-}
-
-int main(int argc, char const *argv[])
-{
-    Table score_table;
+void Game::parse_args(int argc, char const *argv[]) {
     bool reset = false;
     unsigned int level = NULL;
     unsigned int max = NULL;
 
     po::options_description desc("Allowed options");
     desc.add_options()
-        ("help,h", "produce help message")
-        ("level,l", po::value<int>(), "set level of game 1-3")
-        ("max,m", po::value<int>(), "set max value of a number for guess (Don't use with arg level)")
-        ("table,t", "show a table with scoring results and exit")
-        ("reset,r", po::bool_switch(&reset)->default_value(reset),
-                "reset the scoring table values and exit")
-    ;
+            ("help,h", "produce help message")
+            ("level,l", po::value<int>(), "set level of game 1-3")
+            ("max,m", po::value<int>(), "set max value of a number for guess (Don't use with arg level)")
+            ("table,t", "show a table with scoring results and exit")
+            ("reset,r", po::bool_switch(&reset)->default_value(reset),
+             "reset the scoring table values and exit")
+            ;
     po::variables_map vm;
     try {
         po::store(po::parse_command_line(argc, argv, desc), vm);
         if (vm.count("help")) {
             std::cout << desc << std::endl;
-            return 0;
+            std::exit(EXIT_SUCCESS);
         }
         po::notify(vm);
     } catch (const po::error& e) {
         std::cerr << "Error while parsing: " << e.what() << "\n" << desc << std::endl;
-        return 1;
+        std::exit(EXIT_FAILURE);
     }
 
     if (vm.count("reset")) {
-        score_table.reset_results();
-        return 1;
+        score_table_.reset_results();
+        std::exit(EXIT_FAILURE);
     }
 
     if (vm.count("max")) {
@@ -66,6 +60,18 @@ int main(int argc, char const *argv[])
     if (vm.count("level")) {
         level = vm["level"].as<decltype(level)>();
     }
+
+    if (level != NULL && max != NULL) {
+        std::cout << ""
+    }
+
+}
+
+int main(int argc, char const *argv[])
+{
+    Game game;
+    game.parse_args(argc, argv);
+    game.init();
 
     return 0;
 }
