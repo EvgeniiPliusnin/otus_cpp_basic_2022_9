@@ -27,25 +27,37 @@ void exit(void) {
 
 int main(int argc, char const *argv[])
 {
+    Table score_table;
+    bool reset = false;
+    unsigned int level = 1;
+    unsigned int max = 100;
     po::options_description desc("Allowed options");
     desc.add_options()
         ("help,h", "produce help message")
         ("level,l", po::value<int>(), "set level of game 1-3")
         ("max,m", po::value<int>(), "set max value of a number for guess (Don't use with arg level)")
         ("table,t", "show a table with scoring results and exit")
-        ("reset,r", "reset the scoring table values and exit")
+        ("reset,r", po::bool_switch(&reset)->default_value(reset) ,"reset the scoring table values and exit")
     ;
-
-    po::variables_map vm;
-    po::store(po::parse_command_line(argc, argv, desc), vm);
-    po::notify(vm);  
-
-    if (vm.count("help")) {
-        std::cout << desc << "\n";
+    try {
+        po::store(po::parse_command_line(argc, argv, desc), vm);
+        if (vm.count("help")) {
+            std::cout << desc << std::endl;
+            return 0;
+        }
+        po::notify(vm);
+    } catch (const po::error& e) {
+        std::cerr << "Error while parsing: " << e.what() << "\n" << desc << std::endl;
         return 1;
     }
 
-    Table score_table;
+    po::variables_map vm;
+
+//    Path output_dir;
+//    if (vm.count("output")) {
+//        output_dir = vm["output"].as<Path>();
+//    }
+
 
     if (vm.count("reset")) {
         score_table.reset_results();
