@@ -29,8 +29,8 @@ void Game::parse_args(int argc, char const *argv[]) {
     po::options_description desc("Allowed options");
     desc.add_options()
             ("help,h", "produce help message")
-            ("level,l", po::value<int>(), "set level of game 1-3")
-            ("max,m", po::value<int>(), "set max value of a number for guess (Don't use with arg level)")
+            ("level,l", po::value<decltype(level)>(), "set level of game 1-3")
+            ("max,m", po::value<decltype(max)>(), "set max value of a number for guess (Don't use with arg level)")
             ("table,t", "show a table with scoring results and exit")
             ("reset,r", po::bool_switch(&reset)->default_value(reset),
              "reset the scoring table values and exit")
@@ -48,7 +48,7 @@ void Game::parse_args(int argc, char const *argv[]) {
         std::exit(EXIT_FAILURE);
     }
 
-    if (vm.count("reset")) {
+    if (reset) {
         score_table_.reset_results();
         std::exit(EXIT_FAILURE);
     }
@@ -62,7 +62,8 @@ void Game::parse_args(int argc, char const *argv[]) {
     }
 
     if (level != NULL && max != NULL) {
-        std::cout << ""
+        std::cerr << "Don't use two arguments [max] and [level] at the same time" << std::endl;
+        exit(EXIT_FAILURE);
     }
 
 }
