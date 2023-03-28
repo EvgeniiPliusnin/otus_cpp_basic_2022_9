@@ -4,7 +4,7 @@
 Functionality of program:
     - This is a simple CLI game in which you are asked to guess a number.
     - Program calculate your personal score by count attempt quantity.
-    - There are 3 levels - max value of a number (set by command in terminal, default is 1)
+    - There are 3 Levels - max value of a number (set by command in terminal, default is 1)
         and also possible manualy set max value of a number for guessing
 
 

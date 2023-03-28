@@ -14,7 +14,7 @@ std::string get_user_name(void) {
     std::string name;
     std::cin >> name;
     if(name == "") {
-        std::cout << "Error. String is empty. ";    // todo - fix (doesn't show error)
+        std::cerr << "Error. String is empty. ";    // todo - fix (doesn't show error)
         name = get_user_name();
     }
 
@@ -23,6 +23,7 @@ std::string get_user_name(void) {
 
 void Game::parse_args(int argc, char const *argv[]) {
     bool reset = false;
+    bool show_table = false;
     unsigned int level = NULL;
     unsigned int max = NULL;
 
@@ -31,9 +32,9 @@ void Game::parse_args(int argc, char const *argv[]) {
             ("help,h", "produce help message")
             ("level,l", po::value<decltype(level)>(), "set level of game 1-3")
             ("max,m", po::value<decltype(max)>(), "set max value of a number for guess (Don't use with arg level)")
-            ("table,t", "show a table with scoring results and exit")
-            ("reset,r", po::bool_switch(&reset)->default_value(reset),
-             "reset the scoring table values and exit")
+            ("show-table,t", po::bool_switch(&show_table)->default_value(show_table), "how_table with scoring results and exit")
+            ("reset,r", po::bool_switch(&reset)->default_value(reset), "reset show_table"
+             "reset the scoring show_table values and exit")
             ;
     po::variables_map vm;
     try {
@@ -41,6 +42,17 @@ void Game::parse_args(int argc, char const *argv[]) {
         if (vm.count("help")) {
             std::cout << desc << std::endl;
             std::exit(EXIT_SUCCESS);
+        }
+        if (vm.count("max") && vm.count("level")) {
+            std::cerr << "Don't use two arguments [max] and [level] at the same time" << std::endl;
+            exit(EXIT_FAILURE);
+        } else {
+            if (vm.count("max")) {
+                max = vm["max"].as<decltype(max)>();
+            }
+            if (vm.count("level")) {
+                level = vm["level"].as<decltype(level)>();
+            }
         }
         po::notify(vm);
     } catch (const po::error& e) {
@@ -52,18 +64,22 @@ void Game::parse_args(int argc, char const *argv[]) {
         score_table_.reset_results();
         std::exit(EXIT_FAILURE);
     }
-
-    if (vm.count("max")) {
-        max = vm["max"].as<decltype(max)>();
+    if (show_table) {
+        score_table_.show_results();
+        std::exit(EXIT_SUCCESS);
     }
-
-    if (vm.count("level")) {
-        level = vm["level"].as<decltype(level)>();
+    if (max > 0) {
+        std::clog << "max != NULL" << std::endl;
+        range_ = max;
+    } else {
+        std::cerr << "The [max] argument must be greater than zero" << std::endl;
+        std::exit(EXIT_FAILURE);
     }
-
-    if (level != NULL && max != NULL) {
-        std::cerr << "Don't use two arguments [max] and [level] at the same time" << std::endl;
-        exit(EXIT_FAILURE);
+    if (level != NULL) {
+        if (auto item = levels_.find(static_cast<Levels>(level)); item == levels_.end()) {
+            std::cerr << "Invalid argument [--level], please use values 1-3" << std::endl;
+            std::exit(EXIT_FAILURE);
+        }
     }
 
 }
