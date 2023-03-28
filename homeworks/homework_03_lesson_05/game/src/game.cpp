@@ -49,9 +49,19 @@ void Game::parse_args(int argc, char const *argv[]) {
         } else {
             if (vm.count("max")) {
                 max = vm["max"].as<decltype(max)>();
+                if (max > 0) {
+                    range_ = max;
+                } else {
+                    std::cerr << "The [max] argument must be greater than zero" << std::endl;
+                    std::exit(EXIT_FAILURE);
+                }
             }
             if (vm.count("level")) {
                 level = vm["level"].as<decltype(level)>();
+                if (auto item = levels_.find(static_cast<Levels>(level)); item == levels_.end()) {
+                    std::cerr << "Invalid argument [--level], please use values 1-3" << std::endl;
+                    std::exit(EXIT_FAILURE);
+                }
             }
         }
         po::notify(vm);
@@ -68,20 +78,6 @@ void Game::parse_args(int argc, char const *argv[]) {
         score_table_.show_results();
         std::exit(EXIT_SUCCESS);
     }
-    if (max > 0) {
-        std::clog << "max != NULL" << std::endl;
-        range_ = max;
-    } else {
-        std::cerr << "The [max] argument must be greater than zero" << std::endl;
-        std::exit(EXIT_FAILURE);
-    }
-    if (level != NULL) {
-        if (auto item = levels_.find(static_cast<Levels>(level)); item == levels_.end()) {
-            std::cerr << "Invalid argument [--level], please use values 1-3" << std::endl;
-            std::exit(EXIT_FAILURE);
-        }
-    }
-
 }
 
 int main(int argc, char const *argv[])
