@@ -22,7 +22,7 @@ class Game {
 public:
     Game()=default;
     void parse_args(int argc, char const *argv[]);
-    void init(void);
+    void init();
 
 private:
     Table score_table_;

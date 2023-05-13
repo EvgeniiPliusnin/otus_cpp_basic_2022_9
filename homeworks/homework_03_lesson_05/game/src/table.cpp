@@ -35,7 +35,7 @@ Table::Table() {
 }
 
 void Table::show_results() {
-    auto get_max_width = [](std::string item, unsigned int &width) {
+    auto get_max_width = [](const std::string& item, unsigned int &width) {
         auto length = item.length();
         if(length > width)
             width = length;

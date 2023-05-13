@@ -9,7 +9,7 @@ void Game::init() {
     std::cout << "-------------------------------------------------------" << std::endl;
 }
 
-std::string get_user_name(void) {
+std::string get_user_name() {
     std::cout << "Please, enter your name: ";
     std::string name;
     std::cin >> name;
@@ -24,8 +24,8 @@ std::string get_user_name(void) {
 void Game::parse_args(int argc, char const *argv[]) {
     bool reset = false;
     bool show_table = false;
-    unsigned int level = NULL;
-    unsigned int max = NULL;
+    unsigned int level = 0;
+    unsigned int max = 0;
 
     po::options_description desc("Allowed options");
     desc.add_options()

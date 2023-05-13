@@ -34,7 +34,7 @@ private:
 
     std::fstream file_;
     std::vector<Result> table_;
-    std::string header_bound_ = "";
-    std::string line_bound_ = "";
-    std::string row_ = "";    
+    std::string header_bound_;
+    std::string line_bound_;
+    std::string row_;
 };
