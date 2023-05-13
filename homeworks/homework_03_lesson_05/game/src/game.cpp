@@ -4,13 +4,13 @@
 namespace po = boost::program_options;
 using namespace guess_number;
 
-void Game::init() {
+void Game::print_welcome() {
     std::cout << "\n-------------------------------------------------------" << std::endl;
     std::cout << "<<<           The game 'Guess the number'           >>>" << std::endl;
     std::cout << "-------------------------------------------------------" << std::endl;
 }
 
-std::string get_user_name() {
+std::string Game::get_user_name() {
     std::cout << "Please, enter your name: ";
     std::string name;
     std::cin >> name;
@@ -22,16 +22,15 @@ std::string get_user_name() {
     return name;
 }
 
-void Game::parse_args(int argc, char const *argv[]) {
+Game::Game(int argc, char const *argv[]) {
     bool reset = false;
     bool show_table = false;
-    unsigned int level = 0;
     unsigned int max = 0;
 
     po::options_description desc("Allowed options");
     desc.add_options()
             ("help,h", "produce help message")
-            ("level,l", po::value<decltype(level)>(), "set level of game 1-3")
+            ("level,l", po::value<decltype(level_)>(), "set level of game 1-3")
             ("max,m", po::value<decltype(max)>(), "set max value of a number for guess (Don't use with arg level)")
             ("show-table,t", po::bool_switch(&show_table)->default_value(show_table), "how_table with scoring results and exit")
             ("reset,r", po::bool_switch(&reset)->default_value(reset), "reset show_table"
@@ -79,13 +78,13 @@ void Game::parse_args(int argc, char const *argv[]) {
         score_table_.show_results();
         std::exit(EXIT_SUCCESS);
     }
+
+    print_welcome();
 }
 
 int main(int argc, char const *argv[])
 {
-    Game game;
-    game.parse_args(argc, argv);
-    game.init();
+    Game game{argc, argv};
 
     return 0;
 }
