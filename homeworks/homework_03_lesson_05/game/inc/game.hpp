@@ -26,8 +26,9 @@ public:
 
 private:
     Table score_table_;
-    unsigned int range_;
-    unsigned int level_scale_ = 1;
+    unsigned int level_;
+    unsigned int max_;
+    unsigned int scale_ = 1;
     unsigned int attempt_quantity_ = 0;
     const std::unordered_set<Levels> levels_ = {Levels::level_1, Levels::level_2, Levels::level_3};
 };

@@ -12,9 +12,9 @@ Functionality of program:
                                             SCORE
 **************************************************************************************************
 How to calculate score for user:
-    high_score = 500 * level_scale / attempt_quantity
+    high_score = 500 * scale_ / attempt_quantity_
 
-    level_scale depends on variable {range}:
+    scale_ depends on variable {max_}:
         [1] -> 0..9
         [2] -> 10..49
         [3] -> 50..99

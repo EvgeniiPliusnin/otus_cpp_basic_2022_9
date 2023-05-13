@@ -50,15 +50,15 @@ void Game::parse_args(int argc, char const *argv[]) {
             if (vm.count("max")) {
                 max = vm["max"].as<decltype(max)>();
                 if (max > 0) {
-                    range_ = max;
+                    max_ = max;
                 } else {
                     std::cerr << "The [max] argument must be greater than zero" << std::endl;
                     std::exit(EXIT_FAILURE);
                 }
             }
             if (vm.count("level")) {
-                level = vm["level"].as<decltype(level)>();
-                if (auto item = levels_.find(static_cast<Levels>(level)); item == levels_.end()) {
+                level_ = vm["level"].as<decltype(level_)>();
+                if (auto item = levels_.find(static_cast<Levels>(level_)); item == levels_.end()) {
                     std::cerr << "Invalid argument [--level], please use values 1-3" << std::endl;
                     std::exit(EXIT_FAILURE);
                 }
