@@ -22,6 +22,7 @@ const std::unordered_set<Levels> levels = {Levels::level_1, Levels::level_2, Lev
 class Game {
 public:
     Game(int argc, char const *argv[]);
+    void start();
 
 private:
     void print_welcome();

@@ -82,9 +82,14 @@ Game::Game(int argc, char const *argv[]) {
     print_welcome();
 }
 
+void Game::start() {
+
+}
+
 int main(int argc, char const *argv[])
 {
     Game game{argc, argv};
+    game.start();
 
     return 0;
 }
