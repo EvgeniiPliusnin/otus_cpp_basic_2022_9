@@ -27,13 +27,16 @@ public:
 private:
     void print_welcome();
     std::string get_user_name();
+    unsigned int guess_number();
+    unsigned int generate_random();
 
 private:
+    Result player_;
     Table score_table_;
-    unsigned int level_;
-    unsigned int max_;
-    unsigned int scale_ = 1;
-    unsigned int attempt_quantity_ = 0;
+    unsigned int level_{};
+    unsigned int max_{};
+    unsigned int scale_{};
+    unsigned int attempt_quantity_{};
 };
 
 }

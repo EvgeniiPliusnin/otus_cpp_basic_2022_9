@@ -80,15 +80,36 @@ Game::Game(int argc, char const *argv[]) {
     }
 
     print_welcome();
+    /*TODO:
+     * 1. init player
+     * 2. calculate scale*/
+}
+
+unsigned int Game::generate_random() {
+    return 100;
 }
 
 void Game::start() {
+/*
+TODO:
+  1. generate a random number
+  2. start the timer
+  3. call function guess_number | -> return attempt_quantity OR exit from program if player doesn't want continue
+  4. stop the timer
+  5. calculate score(scale, attempt)
+  6. update result table
+*/
 
+}
+
+unsigned int Game::guess_number() {
+    return true;
 }
 
 int main(int argc, char const *argv[])
 {
     Game game{argc, argv};
+    /*TODO: add press Enter for start*/
     game.start();
 
     return 0;
