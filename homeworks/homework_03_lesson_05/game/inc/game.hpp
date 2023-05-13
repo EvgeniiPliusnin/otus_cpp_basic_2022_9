@@ -9,14 +9,15 @@
 #include "structures.hpp"
 #include "unordered_set"
 
-void print_welcome(void);
-void exit(void);
+namespace guess_number {
 
 enum class Levels : unsigned int {
     level_1 = 1,
     level_2 = 2,
     level_3 = 3,
 };
+
+const std::unordered_set<Levels> levels = {Levels::level_1, Levels::level_2, Levels::level_3};
 
 class Game {
 public:
@@ -30,5 +31,6 @@ private:
     unsigned int max_;
     unsigned int scale_ = 1;
     unsigned int attempt_quantity_ = 0;
-    const std::unordered_set<Levels> levels_ = {Levels::level_1, Levels::level_2, Levels::level_3};
 };
+
+}

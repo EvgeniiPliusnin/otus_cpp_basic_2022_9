@@ -2,6 +2,7 @@
 #include "../inc/table.hpp"
 
 namespace po = boost::program_options;
+using namespace guess_number;
 
 void Game::init() {
     std::cout << "\n-------------------------------------------------------" << std::endl;
@@ -58,7 +59,7 @@ void Game::parse_args(int argc, char const *argv[]) {
             }
             if (vm.count("level")) {
                 level_ = vm["level"].as<decltype(level_)>();
-                if (auto item = levels_.find(static_cast<Levels>(level_)); item == levels_.end()) {
+                if (auto item = levels.find(static_cast<Levels>(level_)); item == levels.end()) {
                     std::cerr << "Invalid argument [--level], please use values 1-3" << std::endl;
                     std::exit(EXIT_FAILURE);
                 }
