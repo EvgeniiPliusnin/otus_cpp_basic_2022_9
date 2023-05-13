@@ -10,7 +10,8 @@ add_executable(guess_number
         inc/table.hpp
         src/table.cpp
         inc/structures.hpp
-)
+        src/timer.cpp
+        inc/timer.hpp)
 
 target_link_libraries(guess_number Boost::program_options)
 
