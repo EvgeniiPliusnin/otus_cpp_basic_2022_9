@@ -17,7 +17,8 @@ void Game::print_welcome() {
 std::string Game::get_user_name() {
     std::cout << "Please, enter your name: ";
     std::string name;
-    std::cin >> name;
+//    std::cin >> name;
+    std::getline(std::cin, name);
     if(name == "") {
         std::cerr << "Error. String is empty. ";    // todo - fix (doesn't show error)
         name = get_user_name();
@@ -168,7 +169,7 @@ int main(int argc, char const *argv[])
 {
     Game game{argc, argv};
     do {
-        std::cout << "Press Enter to start the game. Or enter Ctrl+C to exit" << std::endl << std::endl;
+        std::cout << "Press Enter to start the game. Or enter Ctrl+C to exit" << std::endl;
     } while (std::cin.get() != '\n');
     game.start();
 
