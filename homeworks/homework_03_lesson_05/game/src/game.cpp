@@ -101,10 +101,31 @@ TODO:
   6. update result table
 */
 
+    unsigned int random_number = 100;
+    unsigned int attempt_quantity = guess_number(random_number);
+    std::cout << "attempt quantity is " << attempt_quantity << std::endl;
 }
 
-unsigned int Game::guess_number() {
-    return 100;
+unsigned int Game::guess_number(const int target_value) {
+    int current_value{};
+    unsigned int attempt_quantity = 1;
+    std::cout << "Enter your guess:" << std::endl;
+    do {
+        std::cin >> current_value;
+
+        if (current_value < target_value) {
+            std::cout << "You entered less than target " << std::endl;
+        } else if (current_value > target_value) {
+            std::cout << "You entered greater than target" << std::endl;
+        } else {
+            std::cout << "You win!" << std::endl;
+            break;
+        }
+        attempt_quantity++;
+        std::cout << "\nEnter your guess again, please:" << std::endl;
+    } while(true);
+
+    return attempt_quantity;
 }
 
 int main(int argc, char const *argv[])

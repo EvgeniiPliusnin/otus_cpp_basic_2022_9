@@ -27,7 +27,7 @@ public:
 private:
     void print_welcome();
     std::string get_user_name();
-    unsigned int guess_number();
+    unsigned int guess_number(const int target_value);
     unsigned int generate_random();
 
 private:
@@ -36,7 +36,6 @@ private:
     unsigned int level_{};
     unsigned int max_{};
     unsigned int scale_{};
-    unsigned int attempt_quantity_{};
 };
 
 }
