@@ -29,6 +29,7 @@ private:
     std::string get_user_name();
     unsigned int guess_number(const int target_value);
     unsigned int generate_random();
+    void calculate_score(unsigned int attempt_quantity);
 
 private:
     Result player_;

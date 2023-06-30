@@ -1,9 +1,8 @@
 #include "game.hpp"
 #include "table.hpp"
-
-#include <stdlib.h>
 #include <cstdlib>
 #include <ctime>
+#include "timer.hpp"
 
 namespace po = boost::program_options;
 using namespace guess_number;
@@ -125,23 +124,45 @@ unsigned int Game::generate_random() {
     return  random_value;
 }
 
+void Game::calculate_score(unsigned int attempt_quantity) {
+    int scale = 500;
+    player_.score = scale * level_ / attempt_quantity;
+}
+
 void Game::start() {
 /*
 TODO:
   1. generate a random number
   2. start the timer
-  3. call function guess_number | -> return attempt_quantity OR exit from program if player doesn't want continue
+  3. call function guess_number | --> return attempt_quantity OR exit from program if player doesn't want continue
   4. stop the timer
-  5. calculate score(scale, attempt)
+  5. calculate score(level_,  attempt quantity)
   6. update result table
 */
 
+//  TODO 1.
     unsigned int random_number = generate_random();
 #ifdef DEBUG
     std::cout << "Random number is " << random_number << std::endl;
 #endif
+//  TODO 2.
+    Timer timer;
+    timer.start();
+
+//  TODO 3.
     unsigned int attempt_quantity = guess_number(random_number);
     std::cout << "The number of attempts is " << attempt_quantity << std::endl;
+
+//  TODO 4.
+    timer.stop();
+    player_.record_time = timer.get_elapsed_seconds();
+    std::cout << "record time is " << player_.record_time.count() << std::endl;
+
+//    TODO 5.
+    calculate_score(attempt_quantity);
+
+//    TODO 6.
+    score_table_.update(player_);
 }
 
 unsigned int Game::guess_number(const int target_value) {

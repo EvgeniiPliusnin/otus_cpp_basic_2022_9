@@ -10,7 +10,6 @@ add_executable(${PROJECT_NAME}
         include/table.hpp
         src/table.cpp
         include/structures.hpp
-        src/timer.cpp
         include/timer.hpp)
 
 target_include_directories(${PROJECT_NAME} PUBLIC
