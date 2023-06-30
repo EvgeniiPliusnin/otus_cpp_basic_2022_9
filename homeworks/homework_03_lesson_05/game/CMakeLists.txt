@@ -5,17 +5,22 @@ project(guess_number)
 find_package(Boost 1.74 COMPONENTS program_options REQUIRED)
 find_package(Chrono COMPONENTS Irrlicht CONFIG)
 
-add_executable(guess_number
-        src/game.cpp
-        inc/table.hpp
+add_executable(${PROJECT_NAME}
+        src/game.cppF
+        include/table.hpp
         src/table.cpp
-        inc/structures.hpp
+        include/structures.hpp
         src/timer.cpp
-        inc/timer.hpp)
+        include/timer.hpp)
 
-target_link_libraries(guess_number Boost::program_options)
+target_include_directories(${PROJECT_NAME} PUBLIC
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+        $<INSTALL_INTERFACE:include>
+        )
 
-set_target_properties(guess_number PROPERTIES
+target_link_libraries(${PROJECT_NAME} Boost::program_options)
+
+set_target_properties(${PROJECT_NAME} PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
 )

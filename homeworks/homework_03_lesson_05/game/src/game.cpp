@@ -1,5 +1,5 @@
-#include "../inc/game.hpp"
-#include "../inc/table.hpp"
+#include "game.hpp"
+#include "table.hpp"
 
 namespace po = boost::program_options;
 using namespace guess_number;

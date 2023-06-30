@@ -1,4 +1,4 @@
-#include "../inc/timer.hpp"
+#include "timer.hpp"
 
 namespace timer{
 
