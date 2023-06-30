@@ -130,38 +130,28 @@ void Game::calculate_score(unsigned int attempt_quantity) {
 }
 
 void Game::start() {
-/*
-TODO:
-  1. generate a random number
-  2. start the timer
-  3. call function guess_number | --> return attempt_quantity OR exit from program if player doesn't want continue
-  4. stop the timer
-  5. calculate score(level_,  attempt quantity)
-  6. update result table
-*/
-
-//  TODO 1.
+//    Generate a random number
     unsigned int random_number = generate_random();
 #ifdef DEBUG
     std::cout << "Random number is " << random_number << std::endl;
 #endif
-//  TODO 2.
+//  Start the timer
     Timer timer;
     timer.start();
 
-//  TODO 3.
+//  Guess game, count attempts
     unsigned int attempt_quantity = guess_number(random_number);
     std::cout << "The number of attempts is " << attempt_quantity << std::endl;
 
-//  TODO 4.
+//  Stop the timer
     timer.stop();
     player_.record_time = timer.get_elapsed_seconds();
     std::cout << "record time is " << player_.record_time.count() << std::endl;
 
-//    TODO 5.
+//    Calculate the score
     calculate_score(attempt_quantity);
 
-//    TODO 6.
+//    Update result table
     score_table_.update(player_);
 }
 
