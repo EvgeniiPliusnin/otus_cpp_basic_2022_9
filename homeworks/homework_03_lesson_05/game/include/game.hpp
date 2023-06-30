@@ -33,9 +33,8 @@ private:
 private:
     Result player_;
     Table score_table_;
-    unsigned int level_{};
-    unsigned int max_{};
-    unsigned int scale_{};
+    unsigned int level_ = 1;
+    unsigned int max_ = 9;
 };
 
 }

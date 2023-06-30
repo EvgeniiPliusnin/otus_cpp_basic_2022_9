@@ -1,6 +1,10 @@
 #include "game.hpp"
 #include "table.hpp"
 
+#include <stdlib.h>
+#include <cstdlib>
+#include <ctime>
+
 namespace po = boost::program_options;
 using namespace guess_number;
 
@@ -18,6 +22,7 @@ std::string Game::get_user_name() {
         std::cerr << "Error. String is empty. ";    // todo - fix (doesn't show error)
         name = get_user_name();
     }
+    std::cout << std::endl;
 
     return name;
 }
@@ -51,6 +56,15 @@ Game::Game(int argc, char const *argv[]) {
                 max = vm["max"].as<decltype(max)>();
                 if (max > 0) {
                     max_ = max;
+                    if (max_ <= 0) {
+                        level_ = 1;
+                    } else if (max >= 10 && max <= 49) {
+                        level_ = 2;
+                    } else if (max >= 50 && max_ <= 99) {
+                        level_ = 3;
+                    } else {
+                        level_ = 3 + max_ / 100 % 10;
+                    }
                 } else {
                     std::cerr << "The [max] argument must be greater than zero" << std::endl;
                     std::exit(EXIT_FAILURE);
@@ -62,6 +76,27 @@ Game::Game(int argc, char const *argv[]) {
                     std::cerr << "Invalid argument [--level], please use values 1-3" << std::endl;
                     std::exit(EXIT_FAILURE);
                 }
+//                Doesn't work
+//                switch (level_) {
+//                    case Levels::level_1:
+//                        max_ = 9;
+//                        break;
+//                    case Levels::level_2:
+//                        max_ = 49;
+//                        break;
+//                    case Levels::level_3:
+//                        max_ = 99;
+//                        break;
+//                    default:
+//                        break;
+//                }
+                if (level_ == 1) {
+                    max_ = 9;
+                } else if (level_ == 2) {
+                    max_ = 49;
+                } else if (level_ == 3) {
+                    max_ = 99;
+                }
             }
         }
         po::notify(vm);
@@ -72,7 +107,7 @@ Game::Game(int argc, char const *argv[]) {
 
     if (reset) {
         score_table_.reset_results();
-        std::exit(EXIT_FAILURE);
+        std::exit(EXIT_SUCCESS);
     }
     if (show_table) {
         score_table_.show_results();
@@ -80,17 +115,16 @@ Game::Game(int argc, char const *argv[]) {
     }
 
     print_welcome();
-    /*TODO:
-     * 1. init player
-     * 2. calculate scale*/
+    player_.user_name = get_user_name();
 }
 
 unsigned int Game::generate_random() {
-    return 100;
+    std::srand(std::time(nullptr)); // use current time as seed for random generator
+    const int random_value = std::rand() % max_;
+    return  random_value;
 }
 
 void Game::start() {
-    std::cout << "Game has started" << std::endl;
 /*
 TODO:
   1. generate a random number
@@ -101,9 +135,12 @@ TODO:
   6. update result table
 */
 
-    unsigned int random_number = 100;
+    unsigned int random_number = generate_random();
+#ifdef DEBUG
+    std::cout << "Random number is " << random_number << std::endl;
+#endif
     unsigned int attempt_quantity = guess_number(random_number);
-    std::cout << "attempt quantity is " << attempt_quantity << std::endl;
+    std::cout << "The number of attempts is " << attempt_quantity << std::endl;
 }
 
 unsigned int Game::guess_number(const int target_value) {
@@ -114,15 +151,14 @@ unsigned int Game::guess_number(const int target_value) {
         std::cin >> current_value;
 
         if (current_value < target_value) {
-            std::cout << "You entered less than target " << std::endl;
+            std::cout << "Less than target " << std::endl;
         } else if (current_value > target_value) {
-            std::cout << "You entered greater than target" << std::endl;
+            std::cout << "Greater than target" << std::endl;
         } else {
             std::cout << "You win!" << std::endl;
             break;
         }
         attempt_quantity++;
-        std::cout << "\nEnter your guess again, please:" << std::endl;
     } while(true);
 
     return attempt_quantity;
@@ -132,7 +168,7 @@ int main(int argc, char const *argv[])
 {
     Game game{argc, argv};
     do {
-        std::cout << "Press Enter to start the game. Or enter Ctrl+C to exit" << std::endl;
+        std::cout << "Press Enter to start the game. Or enter Ctrl+C to exit" << std::endl << std::endl;
     } while (std::cin.get() != '\n');
     game.start();
 
