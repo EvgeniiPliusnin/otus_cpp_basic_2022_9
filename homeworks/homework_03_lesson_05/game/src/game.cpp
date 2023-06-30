@@ -90,6 +90,7 @@ unsigned int Game::generate_random() {
 }
 
 void Game::start() {
+    std::cout << "Game has started" << std::endl;
 /*
 TODO:
   1. generate a random number
@@ -103,13 +104,15 @@ TODO:
 }
 
 unsigned int Game::guess_number() {
-    return true;
+    return 100;
 }
 
 int main(int argc, char const *argv[])
 {
     Game game{argc, argv};
-    /*TODO: add press Enter for start*/
+    do {
+        std::cout << "Press Enter to start the game. Or enter Ctrl+C to exit" << std::endl;
+    } while (std::cin.get() != '\n');
     game.start();
 
     return 0;

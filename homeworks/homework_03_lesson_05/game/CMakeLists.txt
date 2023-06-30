@@ -6,7 +6,7 @@ find_package(Boost 1.74 COMPONENTS program_options REQUIRED)
 find_package(Chrono COMPONENTS Irrlicht CONFIG)
 
 add_executable(${PROJECT_NAME}
-        src/game.cppF
+        src/game.cpp
         include/table.hpp
         src/table.cpp
         include/structures.hpp
