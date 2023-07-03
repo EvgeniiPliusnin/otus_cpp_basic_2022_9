@@ -2,14 +2,14 @@ cmake_minimum_required(VERSION 3.10)
 
 project(calc CXX)
 
-add_executable(calc
+add_executable(${PROJECT_NAME}
     src/lexer.cpp
     src/parser.cpp
     src/astnode.cpp
     src/main.cpp
 )
 
-target_include_directories(calc PRIVATE include)
+target_include_directories(${PROJECT_NAME} PRIVATE include)
 
 if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR
     CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
@@ -21,11 +21,11 @@ if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR
         -pedantic
     )
 elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    target_compile_options(calc PRIVATE
+    target_compile_options(${PROJECT_NAME} PRIVATE
         /EHsc
         /W4
         /WX
     )
 endif()
 
-target_compile_features(calc PUBLIC cxx_std_17)
+target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_17)
