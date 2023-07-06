@@ -1,5 +1,5 @@
 #include "parser.hpp"
-#include "number.hpp"
+#include "nodes.hpp"
 
 using Token = Lexer::Token;
 
@@ -71,7 +71,7 @@ ASTNode *Parser::prim() {
     next_token();
     switch (tok_) {
     case Token::Number:
-        node = new Number(lexer_.get_number());
+        node = new nodes::Number(lexer_.get_number());
         break;
     case Token::Name:
         // Implement Variable class and uncomment this line
