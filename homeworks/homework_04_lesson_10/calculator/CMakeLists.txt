@@ -7,7 +7,6 @@ add_executable(${PROJECT_NAME}
     src/parser.cpp
     src/astnode.cpp
     src/main.cpp
-    src/nodes.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
