@@ -45,9 +45,7 @@ ASTNode *Parser::term() {
             std::string op = lexer_.get_operator();
             switch (op.front()) {
             case '*':
-                // Implement Mul class and uncomment this line
-                // root = new Mul(root, prim());
-                return nullptr;
+                 root = new nodes::Mul(root, prim());
                 break;
             case '/':
                 // Implement Div class and uncomment this line

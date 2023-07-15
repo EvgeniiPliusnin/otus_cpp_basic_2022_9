@@ -42,7 +42,9 @@ namespace nodes {
     };
 
     class Mul : public ASTNode {
-
+    public:
+        explicit Mul(ASTNode *lhs, ASTNode *rhs)
+                : ASTNode("*", lhs, rhs) {}
     };
 
     class Div : public ASTNode {
