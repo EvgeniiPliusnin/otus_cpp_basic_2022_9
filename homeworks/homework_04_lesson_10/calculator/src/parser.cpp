@@ -48,9 +48,7 @@ ASTNode *Parser::term() {
                  root = new nodes::Mul(root, prim());
                 break;
             case '/':
-                // Implement Div class and uncomment this line
-                //root = new Div(root, prim());
-                return nullptr;
+                root = new nodes::Div(root, prim());
                 break;
             default:
                 return root;

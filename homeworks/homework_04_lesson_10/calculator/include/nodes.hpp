@@ -48,7 +48,9 @@ namespace nodes {
     };
 
     class Div : public ASTNode {
-
+    public:
+        explicit Div(ASTNode *lhs, ASTNode *rhs)
+                : ASTNode("/", lhs, rhs) {}
     };
 
     class Variable : public ASTNode {
