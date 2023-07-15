@@ -19,9 +19,7 @@ ASTNode *Parser::expr() {
                  root = new nodes::Add(root, term());
                 break;
             case '-':
-                // Implement Sub class and uncomment this line
-                //root = new Sub(root, term());
-                return nullptr;
+                root = new nodes::Sub(root, term());
                 break;
             default:
                 return root;

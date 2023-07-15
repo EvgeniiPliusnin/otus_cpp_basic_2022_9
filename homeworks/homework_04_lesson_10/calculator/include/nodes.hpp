@@ -29,7 +29,9 @@ namespace nodes {
     };
 
     class Sub : public ASTNode {
-
+    public:
+        explicit Sub(ASTNode *lhs, ASTNode *rhs)
+                : ASTNode("-", lhs, rhs) {}
     };
 
     class Mul : public ASTNode {
