@@ -22,19 +22,10 @@ namespace nodes {
         int val_;
     };
 
-
-// TODO
-// Implement the next classes:
-// Add
-// Sub
-// Mul
-// Div
-// Variable
-
-// Without implementation that classes this application works only with numbers
-
     class Add : public ASTNode {
-
+    public:
+        explicit Add(ASTNode *lhs, ASTNode *rhs)
+                : ASTNode("+", lhs, rhs) {}
     };
 
     class Sub : public ASTNode {

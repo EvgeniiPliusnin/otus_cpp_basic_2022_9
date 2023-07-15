@@ -16,9 +16,7 @@ ASTNode *Parser::expr() {
             std::string op = lexer_.get_operator();
             switch (op.front()) {
             case '+':
-                // Implement Add class and uncomment this line
-                // root = new Add(root, term());
-                return nullptr;
+                 root = new nodes::Add(root, term());
                 break;
             case '-':
                 // Implement Sub class and uncomment this line
