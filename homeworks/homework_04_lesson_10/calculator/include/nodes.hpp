@@ -12,8 +12,9 @@ namespace nodes {
 
     class Number : public ASTNode {
     public:
-        Number(int val)
-                : ASTNode(std::to_string(val)), val_(val) {}
+        explicit Number(const int val)
+                : ASTNode(std::to_string(val))
+                , val_(val){}
 
         int value() const { return val_; }
 
@@ -49,6 +50,14 @@ namespace nodes {
     };
 
     class Variable : public ASTNode {
+    public:
+        explicit Variable(const std::string& val)
+                : ASTNode(val)
+                , val_(val){}
 
+        std::string value() const { return val_; }
+
+    private:
+        std::string val_;
     };
 }

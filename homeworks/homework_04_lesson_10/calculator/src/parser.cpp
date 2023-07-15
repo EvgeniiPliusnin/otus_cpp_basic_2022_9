@@ -74,9 +74,7 @@ ASTNode *Parser::prim() {
         node = new nodes::Number(lexer_.get_number());
         break;
     case Token::Name:
-        // Implement Variable class and uncomment this line
-        // node = new Variable(lexer_.get_name());
-        return nullptr;
+        node = new nodes::Variable(lexer_.get_name());
         break;
     default:
         break;
