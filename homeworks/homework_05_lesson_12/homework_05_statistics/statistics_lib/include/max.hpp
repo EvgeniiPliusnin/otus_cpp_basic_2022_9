@@ -5,7 +5,7 @@
 #ifndef STATISTICS_MAX_HPP
 #define STATISTICS_MAX_HPP
 
-#include "i_statistics.hpp"
+#include "statistics.hpp"
 
 namespace statistics {
 

@@ -5,7 +5,7 @@
 #ifndef STATISTICS_MIN_HPP
 #define STATISTICS_MIN_HPP
 
-#include "i_statistics.hpp"
+#include "statistics.hpp"
 #include "min.hpp"
 #include "max.hpp"
 

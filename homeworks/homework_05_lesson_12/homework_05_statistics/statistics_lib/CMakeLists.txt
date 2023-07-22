@@ -3,22 +3,20 @@ cmake_minimum_required(VERSION 3.12)
 project(statistics_library)
 
 set(HEADERS
-        include/i_statistics.hpp
+        include/statistics.hpp
         include/max.hpp
         include/min.hpp
         include/mean.hpp
-        include/std.hpp
-        include/pct90.hpp
-        include/pct95.hpp
+        include/sd.hpp
+        include/pct.hpp
 )
 
 set(SOURCES
         src/min.cpp
         src/max.cpp
         src/mean.cpp
-        src/std.cpp
-        src/pct90.cpp
-        src/pct95.cpp
+        src/sd.cpp
+        src/pct.cpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${HEADERS} ${SOURCES})

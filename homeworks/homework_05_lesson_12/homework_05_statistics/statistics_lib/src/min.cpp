@@ -1,12 +1,14 @@
 #include <iostream>
 #include <limits>
 
-#include "i_statistics.hpp"
+#include "statistics.hpp"
 #include "min.hpp"
+#include "max.hpp"
+
 
 namespace statistics {
 
-Min::Min() : m_min{std::numeric_limits<double>::min()} {}
+Min::Min() : m_min{std::numeric_limits<double>::max()} {}
 
 void Min::update(double next) {
     if (next < m_min) {
@@ -21,7 +23,5 @@ double Min::eval() const {
 const char * Min::name() const {
     return "min";
 }
-
-Max::Max() : m_max{std::numeric_limits<double>::max()} {}
 
 }
