@@ -1,17 +1,27 @@
-#pragma once
+//
+// Created by user on 18.07.23.
+//
+
+#ifndef CALC_NUMBER_HPP
+#define CALC_NUMBER_HPP
 
 #include <string>
 
 #include "astnode.hpp"
 
-class Number : public ASTNode {
-  public:
-    Number(int val)
-        : ASTNode(std::to_string(val))
-        , val_(val) {}
+namespace nodes {
 
-    int value() const { return val_; }
+    class Number : public ASTNode {
+    public:
+        explicit Number(const int val)
+                : ASTNode(std::to_string(val)), val_(val) {}
 
-  private:
-    int val_;
-};
+        int value() const { return val_; }
+
+    private:
+        int val_;
+    };
+
+}
+
+#endif //CALC_NUMBER_HPP
