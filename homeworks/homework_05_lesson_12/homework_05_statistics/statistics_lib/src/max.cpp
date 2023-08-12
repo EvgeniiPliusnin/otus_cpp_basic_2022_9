@@ -2,14 +2,13 @@
 // Created by user on 22.07.23.
 //
 
-#include <iostream>
 #include <limits>
 
 #include "max.hpp"
 
 namespace statistics {
 
-    Max::Max() : m_max{std::numeric_limits<double>::min()} {}
+    Max::Max() : m_max{std::numeric_limits<double>::lowest()} {}
 
     void Max::update(double next) {
         if (next > m_max) {

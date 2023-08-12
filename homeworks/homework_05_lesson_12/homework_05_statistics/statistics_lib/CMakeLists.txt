@@ -31,3 +31,20 @@ target_include_directories(
         PRIVATE
         ${CMAKE_CURRENT_BINARY_DIR}
 )
+
+if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR
+        CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+            -g
+            -Wall
+            -Wextra
+            -Werror
+            -pedantic
+            )
+elseif (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    target_compile_options(${PROJECT_NAME} PRIVATE
+            /EHsc
+            /W4
+            /WX
+            )
+endif()
