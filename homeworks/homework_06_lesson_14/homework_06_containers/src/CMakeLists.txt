@@ -13,3 +13,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${CUSTOM_CONTAINERS_LIB_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PRIVATE custom_containers_lib)
+
+#target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_SOURCE_DIR}/custom_iter)
+#target_link_libraries(${PROJECT_NAME} PRIVATE custom_iter_lib)
