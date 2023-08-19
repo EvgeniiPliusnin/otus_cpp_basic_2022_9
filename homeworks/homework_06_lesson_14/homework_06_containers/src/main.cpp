@@ -60,15 +60,16 @@ int main() {
 //    test_container(container);
 //    container.size();
 
-    for(unsigned long int i = 0; i < vector_container.size(); ++i) {
-        auto it = vector_container.begin() + i;
-        auto item = *it;
-        *it = item * i;
-    }
+//    for(unsigned long int i = 0; i < vector_container.size(); ++i) {
+//        auto it = vector_container.begin() + i;
+//        auto item = *it;
+//        *it = item * i;
+//    }
 
-    std::cout << vector_container.size() << std::endl;
-    std::cout << sizeof(vector_container[0]) << std::endl;
-    print_container(vector_container);
+    std::vector<int> test_vector(5);
+    test_vector = {11, 12, 13, 14};
+    std::cout << "test_vector.size(): " << test_vector.size() << std::endl;
+    print_container(test_vector);
 
     return 0;
 }

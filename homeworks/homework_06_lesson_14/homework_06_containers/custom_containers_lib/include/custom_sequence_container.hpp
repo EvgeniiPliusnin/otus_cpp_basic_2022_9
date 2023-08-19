@@ -15,7 +15,9 @@ namespace custom_containers {
     public:
         using Iterator = CustomSequenceContainer<T>;
         explicit CustomSequenceContainer(T value);
-        CustomSequenceContainer(std::initializer_list<T> init_list);
+        explicit CustomSequenceContainer(unsigned long int quantity);
+        CustomSequenceContainer(unsigned long int quantity, T value);
+        CustomSequenceContainer(std::initializer_list<T> initializer_list);
         void push_back(const T& value) override;
         void push_front(const T& value) override;
         void pop_back() override;
@@ -33,20 +35,30 @@ namespace custom_containers {
     };
 
     template<typename T>
-    CustomSequenceContainer<T>::CustomSequenceContainer(std::initializer_list<T> init_list) {
-        m_size = init_list.size();
-        m_capacity = m_size * CAPACITY_RATIO;
-        m_data = new T[m_capacity];
-        unsigned long int index = 0;
-        for (auto& item : init_list) {
-            m_data[index] = item;
-            ++index;
-        }
+    CustomSequenceContainer<T>::CustomSequenceContainer(T value) {
 
     }
 
     template<typename T>
-    CustomSequenceContainer<T>::CustomSequenceContainer(T value) {
+    CustomSequenceContainer<T>::CustomSequenceContainer(unsigned long quantity) {
+
+    }
+
+    template<typename T>
+    CustomSequenceContainer<T>::CustomSequenceContainer(unsigned long quantity, T value) {
+
+    }
+
+    template<typename T>
+    CustomSequenceContainer<T>::CustomSequenceContainer(std::initializer_list<T> initializer_list) {
+        m_size = initializer_list.size();
+        m_capacity = m_size * CAPACITY_RATIO;
+        m_data = new T[m_capacity];
+        unsigned long int index = 0;
+        for (auto& item : initializer_list) {
+            m_data[index] = item;
+            ++index;
+        }
 
     }
 
