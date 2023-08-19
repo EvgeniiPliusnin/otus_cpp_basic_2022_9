@@ -23,8 +23,14 @@ namespace custom_containers {
         void erase(unsigned long int pos);
         void erase();
         long unsigned int size() const;
-        long unsigned int capacity() const;
+        bool empty() const;
         T operator[] (unsigned long int pos);
+
+    private:
+        long unsigned int m_size{};
+        CustomList* prev_node = nullptr;
+        CustomList* next_node = nullptr;
+
     };
 
     template<typename T>
@@ -78,8 +84,10 @@ namespace custom_containers {
     }
 
     template<typename T>
-    long unsigned int CustomList<T>::capacity() const {
-        return 0;
+    bool CustomList<T>::empty() const {
+        if (!m_size){
+            return false;
+        }
     }
 
     template<typename T>

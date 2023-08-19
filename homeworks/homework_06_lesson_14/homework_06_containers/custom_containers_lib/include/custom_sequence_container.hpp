@@ -170,7 +170,6 @@ namespace custom_containers {
         m_data[pos] = value;
     }
 
-
     template<typename T>
     long unsigned int CustomSequenceContainer<T>::size() const {
         return m_size;
