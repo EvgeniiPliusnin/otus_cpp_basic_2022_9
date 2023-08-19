@@ -5,7 +5,7 @@
 #ifndef HOMEWORK_06_LESSON_14_TEST_HPP
 #define HOMEWORK_06_LESSON_14_TEST_HPP
 
-#include "custom_iter.hpp"
+#include "custom_iterator.hpp"
 
 namespace custom_containers {
 

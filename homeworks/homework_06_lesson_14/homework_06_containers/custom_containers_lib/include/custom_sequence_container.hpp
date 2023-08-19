@@ -11,10 +11,11 @@ namespace custom_containers {
 
     template<typename T>
     class CustomSequenceContainer
-            : public CustomContainer<T>
-            {
+            : public CustomContainer<T> {
     public:
+        using Iterator = CustomSequenceContainer<T>;
         explicit CustomSequenceContainer(T value);
+        CustomSequenceContainer(std::initializer_list<T> init_list);
         void push_back(const T& value) override;
         void push_front(const T& value) override;
         void pop_back() override;
@@ -24,9 +25,25 @@ namespace custom_containers {
         void erase() override;
 
     private:
+        static constexpr long unsigned int CAPACITY_RATIO = 2;
+        long unsigned int m_size{};
         long unsigned int m_capacity{};
+        T* m_data = nullptr;
 
     };
+
+    template<typename T>
+    CustomSequenceContainer<T>::CustomSequenceContainer(std::initializer_list<T> init_list) {
+        m_size = init_list.size();
+        m_capacity = m_size * CAPACITY_RATIO;
+        m_data = new T[m_capacity];
+        unsigned long int index = 0;
+        for (auto& item : init_list) {
+            m_data[index] = item;
+            ++index;
+        }
+
+    }
 
     template<typename T>
     CustomSequenceContainer<T>::CustomSequenceContainer(T value) {

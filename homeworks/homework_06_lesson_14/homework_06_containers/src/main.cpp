@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <vector>
+#include <list>
 
 #include "custom_sequence_container.hpp"
 
@@ -51,14 +52,23 @@ int main() {
  *  Part I. example with sequence container
  */
 
-    std::vector<int> container = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    std::vector<int> vector_container = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9,};
+
 //    std::cout << "**************************************" << std::endl;
 //    std::cout << "      Custom sequence container       " << std::endl;
 //    std::cout << "**************************************" << std::endl;
 //    test_container(container);
 //    container.size();
 
-    end(container);
+    for(unsigned long int i = 0; i < vector_container.size(); ++i) {
+        auto it = vector_container.begin() + i;
+        auto item = *it;
+        *it = item * i;
+    }
+
+    std::cout << vector_container.size() << std::endl;
+    std::cout << sizeof(vector_container[0]) << std::endl;
+    print_container(vector_container);
 
     return 0;
 }

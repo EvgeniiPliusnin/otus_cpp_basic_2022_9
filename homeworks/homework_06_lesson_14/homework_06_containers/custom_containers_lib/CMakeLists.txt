@@ -6,7 +6,7 @@ set(HEADERS
         include/custom_container.hpp
         include/custom_list_container.hpp
         include/custom_sequence_container.hpp
-        include/custom_iter.hpp
+        include/custom_iterator.hpp
 )
 
 add_library(${PROJECT_NAME} STATIC ${HEADERS})
