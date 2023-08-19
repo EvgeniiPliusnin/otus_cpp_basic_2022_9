@@ -3,73 +3,50 @@
 //
 
 #include <iostream>
-#include <vector>
-#include <list>
 
 #include "custom_sequence_container.hpp"
+
+using namespace custom_containers;
 
 template<typename T>
 void print_container(T& container) {
     for (long unsigned int i = 0; i < container.size(); ++i) {
         std::cout << container[i] << " ";
     }
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
 }
 
 template<typename T>
 void test_container(T container) {
     print_container(container);
-    std::cout << "size of container is: " << container.size() << std::endl;
+    std::cout << "size of container is: " << container.size() << std::endl<< std::endl;
 
-    auto it = container.begin();
-    container.erase(it + 2);
-    container.erase(it + 3);
-    container.erase(it + 4);
+    container.erase(2);
+    container.erase(3);
+    container.erase(4);
+    std::cout << "remove 3, 5, 7 elements" << std::endl;
     print_container(container);
 
-    it = container.begin();
-    container.insert(it, 10);
+    std::cout << "insert number '10' at position 0" << std::endl;
+    container.insert(0, 10);
     print_container(container);
 
-    container.insert(it + 4, 20);
+    std::cout << "insert number '20' at position 4" << std::endl;
+    container.insert(4, 20);
     print_container(container);
 
+    std::cout << "add in the end number '30'" << std::endl;
     container.push_back(30);
     print_container(container);
 }
 
-template<typename ... T>
-class InitializerListTestClass {
-public:
-    explicit InitializerListTestClass(T ... arg) {
-
-    }
-};
 
 int main() {
-
-/*
- *  Part I. example with sequence container
- */
-
-    std::vector<int> vector_container = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9,};
-
-//    std::cout << "**************************************" << std::endl;
-//    std::cout << "      Custom sequence container       " << std::endl;
-//    std::cout << "**************************************" << std::endl;
-//    test_container(container);
-//    container.size();
-
-//    for(unsigned long int i = 0; i < vector_container.size(); ++i) {
-//        auto it = vector_container.begin() + i;
-//        auto item = *it;
-//        *it = item * i;
-//    }
-
-    std::vector<int> test_vector(5);
-    test_vector = {11, 12, 13, 14};
-    std::cout << "test_vector.size(): " << test_vector.size() << std::endl;
-    print_container(test_vector);
+    std::cout << "**************************************" << std::endl;
+    std::cout << "             Sequence container       " << std::endl;
+    std::cout << "**************************************" << std::endl;
+    CustomSequenceContainer<int> sequence_container {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    test_container(sequence_container);
 
     return 0;
 }

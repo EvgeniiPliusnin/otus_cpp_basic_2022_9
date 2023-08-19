@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.12)
 project(custom_containers_lib)
 
 set(HEADERS
-        include/custom_container.hpp
         include/custom_list_container.hpp
         include/custom_sequence_container.hpp
         include/custom_iterator.hpp
@@ -17,7 +16,7 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 find_path(CUSTOM_CONTAINERS_LIB_INCLUDE_DIRS
-        NAMES custom_container.hpp
+        NAMES custom_iterator.hpp
         PATHS ${CMAKE_CURRENT_SOURCE_DIR}
         PATH_SUFFIXES include
 )

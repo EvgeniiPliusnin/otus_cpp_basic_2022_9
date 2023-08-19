@@ -10,10 +10,10 @@ namespace custom_containers {
     template<typename T>
     class CustomIterator {
     public:
-        CustomIterator(T* data_ref)
+        CustomIterator(T data_ref)
             : _reference(data_ref){}
 
-        CustomIterator operator+ (unsigned long int value) {};;
+        CustomIterator operator+ (unsigned long int value) {};
         CustomIterator operator- (unsigned long int value) {};
         CustomIterator& operator--() {}; // Prefix decrement operator
         CustomIterator operator--(T) {}; // Postfix decrement operator
