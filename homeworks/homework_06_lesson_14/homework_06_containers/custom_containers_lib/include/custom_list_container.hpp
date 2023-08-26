@@ -9,11 +9,21 @@
 
 namespace custom_containers {
 
+    template<class T>
+    class ListNode {
+        T* data;
+        ListNode* m_prev_node = nullptr;
+        ListNode* m_next_node = nullptr;
+    };
+
     template<typename T>
     class CustomList {
+
     public:
-        explicit CustomList (T value);
         CustomList(std::initializer_list<T> initializer_list);
+        explicit CustomList(T value);
+        CustomList(const CustomList<T> &other);
+
         ~CustomList();
         void push_back(const T& value);
         void push_front(const T& value);
@@ -24,76 +34,24 @@ namespace custom_containers {
         void erase();
         long unsigned int size() const;
         bool empty() const;
-        T operator[] (unsigned long int pos);
+        T& front();
+        T& back();
+
+        T& operator[] (unsigned long int pos);
 
     private:
         long unsigned int m_size{};
-        CustomList* prev_node = nullptr;
-        CustomList* next_node = nullptr;
-
+        ListNode<T> *m_head = nullptr;
+        ListNode<T> *m_tail = nullptr;
+        ListNode<T> *m_temp = nullptr;
     };
 
     template<typename T>
-    CustomList<T>::CustomList(T value) {
-
-    }
-
-    template<typename T>
     CustomList<T>::CustomList(std::initializer_list<T> initializer_list) {
+        for (auto& item : initializer_list) {
 
-    }
-
-    template<typename T>
-    CustomList<T>::~CustomList() {
-
-    }
-
-    template<typename T>
-    void CustomList<T>::push_back(const T &value) {
-
-    }
-
-    template<typename T>
-    void CustomList<T>::push_front(const T &value) {
-
-    }
-
-    template<typename T>
-    void CustomList<T>::pop_back() {
-
-    }
-
-    template<typename T>
-    void CustomList<T>::pop_front() {
-
-    }
-
-    template<typename T>
-    void CustomList<T>::insert(unsigned long pos, const T &value) {
-
-    }
-
-    template<typename T>
-    void CustomList<T>::erase(unsigned long pos) {
-
-    }
-
-    template<typename T>
-    long unsigned int CustomList<T>::size() const {
-        return 0;
-    }
-
-    template<typename T>
-    bool CustomList<T>::empty() const {
-        if (!m_size){
-            return false;
         }
     }
 
-    template<typename T>
-    T CustomList<T>::operator[](unsigned long pos) {
-        return nullptr;
-    }
-}
 
 #endif //CUSTOM_CONTAINERS_CUSTOM_LIST_CONTAINER_HPP

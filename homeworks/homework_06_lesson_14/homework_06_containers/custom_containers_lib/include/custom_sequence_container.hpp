@@ -27,7 +27,7 @@ namespace custom_containers {
         void erase();
         long unsigned int size() const;
         long unsigned int capacity() const;
-        T operator[] (unsigned long int pos);
+        T& operator[] (unsigned long int pos);
 
     private:
         void shift_right(unsigned long int pos, unsigned long int shift);
@@ -181,7 +181,7 @@ namespace custom_containers {
     }
 
     template<typename T>
-    T CustomSequenceContainer<T>::operator[](unsigned long pos) {
+    T& CustomSequenceContainer<T>::operator[](unsigned long pos) {
         return m_data[pos];
     }
 

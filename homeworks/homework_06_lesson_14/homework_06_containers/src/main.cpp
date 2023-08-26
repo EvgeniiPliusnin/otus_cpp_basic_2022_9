@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include "custom_sequence_container.hpp"
+#include "custom_list_container.hpp"
 
 using namespace custom_containers;
 
@@ -42,11 +43,18 @@ void test_container(T container) {
 
 
 int main() {
+//    std::cout << "**************************************" << std::endl;
+//    std::cout << "             Sequence container       " << std::endl;
+//    std::cout << "**************************************" << std::endl;
+//    CustomSequenceContainer<int> sequence_container {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+//    test_container(sequence_container);
+
     std::cout << "**************************************" << std::endl;
-    std::cout << "             Sequence container       " << std::endl;
+    std::cout << "          Linked list container       " << std::endl;
     std::cout << "**************************************" << std::endl;
-    CustomSequenceContainer<int> sequence_container {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    test_container(sequence_container);
+    CustomList<int> list_container {555, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    print_container(list_container);
+    std::cout << "size of custom linked list container is " << list_container.size() << std::endl;
 
     return 0;
 }
