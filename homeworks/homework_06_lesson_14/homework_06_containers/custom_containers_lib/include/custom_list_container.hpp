@@ -120,13 +120,21 @@ namespace custom_containers {
             target_pos = target_pos->m_next_node;
         }
         ListNode<T> *new_node = new ListNode(value);
-        ListNode<T> *prev = target_pos->m_prev_node;
-        ListNode<T> *next = target_pos;
 
-        new_node->m_prev_node = prev;
-        new_node->m_next_node = next;
-        prev->m_next_node = new_node;
-        next->m_prev_node = new_node;
+        if (target_pos != m_head) {
+            ListNode<T> *prev = target_pos->m_prev_node;
+            ListNode<T> *next = target_pos;
+            new_node->m_prev_node = prev;
+            new_node->m_next_node = next;
+            prev->m_next_node = new_node;
+            next->m_prev_node = new_node;
+        } else {
+            m_head->m_prev_node = new_node;
+            new_node->m_next_node = m_head;
+            m_head = new_node;
+        }
+
+        ++m_size;
     }
 
     template<typename T>
@@ -143,6 +151,8 @@ namespace custom_containers {
         target_pos->m_next_node = nullptr;
         target_pos->m_prev_node = nullptr;
         delete target_pos;
+
+        --m_size;
     }
 
     template<typename T>

@@ -43,17 +43,16 @@ void test_container(T& container) {
 
 
 int main() {
-//    std::cout << "**************************************" << std::endl;
-//    std::cout << "             Sequence container       " << std::endl;
-//    std::cout << "**************************************" << std::endl;
-//    CustomSequenceContainer<int> sequence_container {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-//    test_container(sequence_container);
+    std::cout << "**************************************" << std::endl;
+    std::cout << "             Sequence container       " << std::endl;
+    std::cout << "**************************************" << std::endl;
+    CustomSequenceContainer<int> sequence_container {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    test_container(sequence_container);
 
     std::cout << "**************************************" << std::endl;
     std::cout << "          Linked list container       " << std::endl;
     std::cout << "**************************************" << std::endl;
     CustomList<int> list_container {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-//    print_container(list_container);
     test_container(list_container);
 
     return 0;
