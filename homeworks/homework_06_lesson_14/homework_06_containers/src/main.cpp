@@ -18,7 +18,7 @@ void print_container(T& container) {
 }
 
 template<typename T>
-void test_container(T container) {
+void test_container(T& container) {
     print_container(container);
     std::cout << "size of container is: " << container.size() << std::endl<< std::endl;
 
@@ -52,9 +52,9 @@ int main() {
     std::cout << "**************************************" << std::endl;
     std::cout << "          Linked list container       " << std::endl;
     std::cout << "**************************************" << std::endl;
-    CustomList<int> list_container {555, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    print_container(list_container);
-    std::cout << "size of custom linked list container is " << list_container.size() << std::endl;
+    CustomList<int> list_container {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+//    print_container(list_container);
+    test_container(list_container);
 
     return 0;
 }

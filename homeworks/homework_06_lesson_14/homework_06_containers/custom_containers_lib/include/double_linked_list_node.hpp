@@ -19,9 +19,7 @@ namespace custom_containers {
             this->m_prev_node = other.m_prev_node;
         }
 
-        ListNode(ListNode<T> &&other) noexcept {
-
-        }
+        ListNode(ListNode<T> &&other) noexcept {}
 
         ~ListNode() = default;
 

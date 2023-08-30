@@ -78,9 +78,9 @@ namespace custom_containers {
             m_head = node;
             m_tail = node;
         } else {
-            m_head->m_prev_node = node;
-            node->m_next_node = m_head;
-            m_head = node;
+            m_tail->m_next_node = node;
+            node->m_prev_node = m_tail;
+            m_tail = node;
         }
         ++m_size;
     }
@@ -92,9 +92,9 @@ namespace custom_containers {
             m_head = node;
             m_tail = node;
         } else {
-            m_tail->m_next_node = node;
-            node->m_prev_node = m_tail;
-            m_tail = node;
+            m_head->m_prev_node = node;
+            node->m_next_node = m_head;
+            m_head = node;
         }
         ++m_size;
     }
@@ -140,6 +140,8 @@ namespace custom_containers {
         first->m_next_node = second;
         second->m_prev_node = first;
 
+        target_pos->m_next_node = nullptr;
+        target_pos->m_prev_node = nullptr;
         delete target_pos;
     }
 
