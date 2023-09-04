@@ -104,6 +104,7 @@ namespace custom_containers {
         ListNode<T> *temp_node = m_tail;
         m_tail = m_tail->m_prev_node;
         delete temp_node;
+        --m_size;
     }
 
     template<typename T>
@@ -111,6 +112,7 @@ namespace custom_containers {
         ListNode<T> *temp_node = m_head;
         m_head = m_head->m_next_node;
         delete temp_node;
+        --m_size;
     }
 
     template<typename T>
