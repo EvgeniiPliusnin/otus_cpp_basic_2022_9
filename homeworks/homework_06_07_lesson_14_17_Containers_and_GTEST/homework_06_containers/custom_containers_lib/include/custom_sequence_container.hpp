@@ -12,6 +12,7 @@ namespace custom_containers {
     template<typename T>
     class CustomSequenceContainer{
     public:
+        CustomSequenceContainer();
         explicit CustomSequenceContainer(T value);
         explicit CustomSequenceContainer(unsigned long int quantity);
         CustomSequenceContainer(unsigned long int quantity, T value);
@@ -40,6 +41,13 @@ namespace custom_containers {
         long unsigned int m_capacity{};
         T* m_data = nullptr;
     };
+
+    template<typename T>
+    CustomSequenceContainer<T>::CustomSequenceContainer() {
+        m_size = 0;
+        m_capacity = 5;
+        m_data = new T[m_capacity] {0};
+    }
 
     template<typename T>
     CustomSequenceContainer<T>::CustomSequenceContainer(const CustomSequenceContainer<T> & other) {
@@ -116,7 +124,7 @@ namespace custom_containers {
     void CustomSequenceContainer<T>::push_back(const T &value) {
         if (m_size == m_capacity) {
             T* new_data = get_expanded_zero_array();
-            for(auto index = 0; index < m_size; ++index) {
+            for(long unsigned int index = 0; index < m_size; ++index) {
                 new_data[index] = m_data[index];
             }
             delete[] m_data;
