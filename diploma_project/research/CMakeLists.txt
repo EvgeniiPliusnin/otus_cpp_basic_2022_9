@@ -12,14 +12,6 @@ set_target_properties(video_capture PROPERTIES
     CXX_STANDARD_REQUIRED ON
     )
 
-if (MSVC)
-    target_compile_options(video_capture PRIVATE
-        /W4
-        )
-else ()
-    target_compile_options(video_capture PRIVATE
-        -Wall -Wextra -pedantic -Werror
-        )
-endif()
-
-
+target_compile_options(video_capture PRIVATE
+    -Wall -Wextra -pedantic -Werror
+    )
